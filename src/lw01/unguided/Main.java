@@ -2,8 +2,6 @@ package lw01.unguided;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -17,8 +15,13 @@ public class Main {
                 String type = scanner.next();
                 String id = scanner.next();
                 int days = scanner.nextInt();
-                int units = scanner.nextInt();
-                rentals[i] = new Rental(type, id, days, units);
+                
+                 if (type.equals("LAPTOP")) {
+                    rentals[i] = new LaptopRental(id, days);
+                } else if (type.equals("PROJECTOR")) {
+                    rentals[i] = new ProjectorRental(id, days);
+                }
+
             }
 
         } catch (FileNotFoundException e) {
